@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn{
+  @apply text-white bg-black px-5 py-2 rounded-full shadow-xl hover:bg-white hover:text-black;
+}
