@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "poppins";
+}
+
+.btn-blue {
+  @apply bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded shadow-md transition ease-in-out delay-100;
+}
+
+.btn-gred-black{
+  @apply bg-gradient-to-r from-black to-slate-800 text-white px-6 py-3 rounded shadow transition-all hover:scale-105 ease-in-out;
+}
+
+.skill-box{
+  @apply bg-slate-900 rounded shadow p-3 font-semibold;
+}
