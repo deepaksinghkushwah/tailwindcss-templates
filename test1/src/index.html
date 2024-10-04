@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <style>
+      [x-cloak] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <h1 class="text-4xl">Hello</h1>
+      <div x-data="{
+        open: false, 
+        name: 'brad', 
+        posts: [
+          {id: 1, title: 'My First Post'},
+          {id: 2, title: 'My Second Post'}
+        ]
+      }">
+        <button class="mt-4 mb-4 button"
+          x-on:click="open = !open">Toggle</button>
+        <div x-show="open" x-cloak x-transition>
+          <p class="bg-blue-600 shadow rounded text-white text-center">
+            If open is truef
+          </p>
+          <div class="my-4" x-text="name"></div>
+        </div>
+        <template x-for="post in posts" :key="post.id">
+          <p x-text="post.title" class="text-lg"></p>
+        </template>
+        <button class="button"
+          x-on:click="posts.push({title: 'Hello There'})">Add New Post</button>
+        <!--x-ref-->
+        <div class="my-6">
+          <div x-ref="text"></div>
+          <button class="button" x-on:click="$refs.text.innerText='Hello World!'">Click</button>
+        </div>
+        <!--html-->
+        <div x-html="(await axios.get('./partial.html')).data"></div>
+        <button class="button" x-on:click="$el.innerText='Text Changed'">Click to change text</button>
+      </div> <!--Apline component end-->
+    </div>
+
+  </body>
+</html>
